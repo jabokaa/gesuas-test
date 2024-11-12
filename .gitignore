@@ -1,0 +1,4 @@
+# Dependências do Composer
+/vendor/
+# Configurações do Composer
+composer.lock

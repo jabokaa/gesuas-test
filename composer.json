@@ -1,0 +1,16 @@
+{
+    "name": "gesuas/test",
+    "description": "a aplicação contendo um formulário para cadastrar cidadãos. O formulário deve conter um único campo para informar o nome do cidadão. Ao ser cadastrado, um número NIS deve ser gerado automaticamente, atribuído a esta pessoa e então exibido na tela junto de uma mensagem de sucesso.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Gesuas\\Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "João Beleño"
+        }
+    ],
+    "require": {}
+}
