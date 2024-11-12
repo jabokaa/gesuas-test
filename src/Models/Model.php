@@ -23,7 +23,7 @@ class Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getById($id)
+    public function find($id)
     {
         $query = "SELECT * FROM " . $this->table . " WHERE id = :id";
         $stmt = $this->db->prepare($query);
