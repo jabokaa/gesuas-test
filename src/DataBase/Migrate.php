@@ -50,7 +50,6 @@ class Migrate
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )");
 
-
         // pega os artivos .sql da pasta database migrations
         echo __DIR__ . PHP_EOL;
         $files = glob(__DIR__ . '/Migrations/*.sql');
