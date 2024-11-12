@@ -8,12 +8,8 @@ use PDOException;
 
 class Database
 {
-    private $host = 'localhost';
-    private $dbName = 'nome_do_banco';
-    private $username = 'usuario';
-    private $password = 'senha';
-    private $
-    ;
+
+    private $pdo;
 
     public function __construct()
     {
