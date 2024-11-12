@@ -13,9 +13,6 @@ class Database
 
     public function __construct()
     {
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
-
         $dbHost = $_ENV['DB_HOST'] ?? 'localhost';
         $dbName = $_ENV['DB_NAME'] ?? 'test';
         $dbUser = $_ENV['DB_USER'] ?? 'root';
