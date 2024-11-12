@@ -2,6 +2,7 @@
 
 namespace Gesuas\Test;
 
+use Dotenv\Dotenv;
 use PDO;
 use PDOException;
 
@@ -11,16 +12,24 @@ class Database
     private $dbName = 'nome_do_banco';
     private $username = 'usuario';
     private $password = 'senha';
-    private $pdo;
+    private $
+    ;
 
     public function __construct()
     {
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+
+        $dbHost = $_ENV['DB_HOST'];
+        $dbName = $_ENV['DB_NAME'];
+        $dbUser = $_ENV['DB_USER'];
+        $dbPass = $_ENV['DB_PASS'];
+        $dbPort = $_ENV['DB_PORT'];
         try {
-            $dsn = "mysql:host=$this->host;dbname=$this->dbName";
-            $this->pdo = new PDO($dsn, $this->username, $this->password);
+            $this->pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;port=$dbPort", $dbUser, $dbPass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Erro de conexão: " . $e->getMessage();
+            echo "Erro de conexão: " . $e->getMessage(); exit;
         }
     }
 

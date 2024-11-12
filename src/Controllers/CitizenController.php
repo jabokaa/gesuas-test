@@ -6,7 +6,7 @@ use PDO;
 
 class CitizenController
 {
-    public function test()
+    public function index()
     {
         echo 'Test';
     }

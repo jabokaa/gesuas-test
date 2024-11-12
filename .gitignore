@@ -2,3 +2,4 @@
 /vendor/
 # Configurações do Composer
 composer.lock
+.env
