@@ -64,6 +64,5 @@ class Migrate
             $this->pdo->exec($sql);
             $this->pdo->exec("INSERT INTO migrations (migration) VALUES ('$fineName')");
         }
-        
     }
 }
