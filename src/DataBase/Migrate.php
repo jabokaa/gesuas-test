@@ -41,7 +41,7 @@ class Migrate
     {
         $dbName = $_ENV['DB_NAME'];
         $this->conection(false);
-        $result = $this->pdo->exec("CREATE DATABASE IF NOT EXISTS $dbName");
+        $this->pdo->exec("CREATE DATABASE IF NOT EXISTS $dbName");
         $this->conection();
         // Criar a tabela migration se nao existir
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations (
