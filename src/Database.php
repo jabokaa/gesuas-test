@@ -16,11 +16,11 @@ class Database
         $dotenv = Dotenv::createImmutable(__DIR__);
         $dotenv->load();
 
-        $dbHost = $_ENV['DB_HOST'];
-        $dbName = $_ENV['DB_NAME'];
-        $dbUser = $_ENV['DB_USER'];
-        $dbPass = $_ENV['DB_PASS'];
-        $dbPort = $_ENV['DB_PORT'];
+        $dbHost = $_ENV['DB_HOST'] ?? 'localhost';
+        $dbName = $_ENV['DB_NAME'] ?? 'test';
+        $dbUser = $_ENV['DB_USER'] ?? 'root';
+        $dbPass = $_ENV['DB_PASS'] ?? '';
+        $dbPort = $_ENV['DB_PORT'] ?? '3306';
         try {
             $this->pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;port=$dbPort", $dbUser, $dbPass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
