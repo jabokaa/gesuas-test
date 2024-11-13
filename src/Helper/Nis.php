@@ -13,7 +13,12 @@ class Nis
         }
     }
 
-    public function generetNisCrc32Name($name)
+    /**
+     * Gera um NIS unico
+     * @param string $name
+     * @return int
+     */
+    public function generateNisCrc32Name(string $name): int
     {
         // geramos um numero unico para o nome de 9 digitos
         $newNis = $this->generetCrc32($name);
@@ -29,7 +34,12 @@ class Nis
         }
     }
 
-    private function generetCrc32($name)
+    /**
+     * Gera um NIS unico para o nome
+     * @param string $name
+     * @return int
+     */
+    private function generetCrc32(string $name)
     {
         $crc32 = crc32($name);
 

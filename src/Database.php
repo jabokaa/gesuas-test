@@ -36,7 +36,11 @@ class Database
         }
     }
 
-    public function getConnection()
+    /**
+     * Retorna a conexão com o banco de dados
+     * @return PDO
+     */
+    public function getConnection(): PDO
     {
         return $this->pdo;
     }

@@ -2,12 +2,17 @@
 
 namespace Gesuas\Test\Controllers;
 
-use Gesuas\Test\Models\citizen;
-use PDO;
-
 class Controller
 {
-    public function render($view, $params = [])
+
+    
+    /**
+     * Renderiza a view
+     * @param string $view uri da view
+     * @param array $params
+     * @return array
+     */
+    public function render(string $view, array $params = []): array
     {
         // verifica se esta executando teste unitario
         if (defined('PHPUNIT_RUNNING')) {
@@ -18,7 +23,13 @@ class Controller
         return $params;
     }
 
-    protected function getContent($view, $params)
+    /**
+     * Pega o conteudo da view
+     * @param string $view uri da view
+     * @param array $params
+     * @return string
+     */
+    protected function getContent(string $view, $params): string
     {
         // ob_start inicia o buffer
         ob_start();
@@ -29,7 +40,12 @@ class Controller
         return ob_get_clean();
     }
 
-    protected function getLayout($content)
+    /**
+     * Pega o layout
+     * @param string $content
+     * @return string
+     */
+    protected function getLayout(string $content): string
     {
         // ob_start inicia o buffer
         ob_start();

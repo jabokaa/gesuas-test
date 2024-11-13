@@ -19,7 +19,12 @@ class CitizenController extends Controller
         }
     }
 
-    public function index(Request $request)
+    /**
+     * Lista os cidadãos
+     * @param Request $request
+     * @return array
+     */
+    public function index(Request $request): array
     {
         try{
             $data = $this->citizen->getPaginate(
@@ -34,7 +39,12 @@ class CitizenController extends Controller
         }
     }
 
-    public function show(Request $request)
+    /**
+     * Mostra um cidadão
+     * @param Request $request
+     * @return array
+     */
+    public function show(Request $request): array
     {
         try{
             $data = $this->citizen->getByNis($request->get('nis'));
@@ -49,16 +59,26 @@ class CitizenController extends Controller
         }
     }
 
-    public function create(Request $request)
+    /**
+     * Leva para a view de criação de cidadão
+     * @param Request $request
+     * @return array
+     */
+    public function create(Request $request): array
     {
         return $this->render('citizens/create');
     }
 
-    public function store(Request $request)
+    /**
+     * Armazena um cidadão
+     * @param Request $request
+     * @return array
+     */
+    public function store(Request $request): array
     {
         try{
             $name = $request->get('name');
-            $nis = $this->nis->generetNisCrc32Name($name);
+            $nis = $this->nis->generateNisCrc32Name($name);
             $data = $this->citizen->create($name, $nis);
             return $this->render('citizens/show', [
                 'citizen' => $data

@@ -16,14 +16,23 @@ class Model
         $this->db = $database->getConnection();
     }
 
-    public function getAll()
+    /**
+     * Retorna todos os registros
+     * @return array
+     */
+    public function getAll(): array
     {
         $query = "SELECT * FROM " . $this->table;
         $stmt = $this->db->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function find($id)
+    /**
+     * Retorna um registro pelo id
+     * @param int $id
+     * @return array
+     */
+    public function find($id): array
     {
         $query = "SELECT * FROM " . $this->table . " WHERE id = :id";
         $stmt = $this->db->prepare($query);

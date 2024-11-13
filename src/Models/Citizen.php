@@ -8,7 +8,16 @@ class Citizen extends Model
 {
     protected $table = 'citizens';
 
-    public function getPaginate($nis, $name, $date, $page = 1, $perPage = 10)
+    /**
+     * Retorna os cidadãos paginados
+     * @param string|null $nis
+     * @param string|null $name
+     * @param string|null $date
+     * @param int $page
+     * @param int $perPage
+     * @return array
+     */
+    public function getPaginate($nis, $name, $date, $page = 1, $perPage = 10): array
     {
         $sqlCount = "SELECT COUNT(*) AS total FROM {$this->table} WHERE 1 = 1";
         $sql = "SELECT nis, name, DATE_FORMAT(created_at, '%d/%m/%Y %H:%i:%s') AS created_at FROM {$this->table} WHERE 1 = 1";
@@ -44,15 +53,26 @@ class Citizen extends Model
         ];
     }
 
-    public function getByNis($nis)
+    /**
+     * Retorna um cidadão pelo NIS
+     * @param string $nis
+     *
+     * @return array|null|bool
+     */
+    public function getByNis($nis): array|bool|null
     {
         $query = "SELECT nis, name, DATE_FORMAT(created_at, '%d/%m/%Y %H:%i:%s') AS created_at FROM {$this->table} WHERE nis = '$nis'";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ?? [];
     }
 
-    public function findMaxNis()
+    /**
+     * Retorna o maior NIS
+     * @return array
+     */
+    public function findMaxNis(): array
     {
         $query = "SELECT MAX(nis) AS nis FROM {$this->table}";
         $stmt = $this->db->prepare($query);
@@ -60,7 +80,13 @@ class Citizen extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create($name, $nis)
+    /**
+     * Cria um cidadão
+     * @param string $name
+     * @param string $nis
+     * @return array
+     */
+    public function create($name, $nis): array
     {
         $query = "INSERT INTO {$this->table} (name, nis) VALUES ('$name', '$nis')";
         $stmt = $this->db->prepare($query);

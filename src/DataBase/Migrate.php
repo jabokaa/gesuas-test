@@ -12,12 +12,22 @@ class Migrate
 
     private $pdo;
 
+    /**
+     * Carrega as variaveis de ambiente
+     * @return void
+     */
     private function loadEnv()
     {
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
         $dotenv->load();
     }
-    public function conection($useDbName = true)
+
+    /**
+     * Conecta ao banco de dados
+     * @param bool $useDbName informa se deve usar o nome do banco de dados para a conexao
+     * @return void
+     */
+    public function conection($useDbName = true): void
     {
         $this->loadEnv();
         $dbHost = $_ENV['DB_HOST'];
@@ -47,22 +57,33 @@ class Migrate
         }
     }
 
-    public function getConnection()
+    /**
+     * Pega a conexao
+     * @return PDO
+     */
+    public function getConnection():  PDO
     {
         return $this->pdo;
     }
 
-    public function up()
+    /**
+     * Executa as migrations
+     * @return void
+     */
+    public function up(): void
     {
         $this->loadEnv();
         $dbName = $_ENV['DB_NAME'];
         if (defined('PHPUNIT_RUNNING')) {
             $dbName = $_ENV['DB_NAME_TEST'];
         }
+        echo "Migrating database..." . PHP_EOL;
         $this->conection(false);
+        echo "Creating database..." . PHP_EOL;
         $this->pdo->exec("CREATE DATABASE IF NOT EXISTS $dbName");
         $this->conection();
         // Criar a tabela migration se nao existir
+        echo "Creating migrations table..." . PHP_EOL;
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations (
             id INT AUTO_INCREMENT PRIMARY KEY,
             migration VARCHAR(255) NOT NULL,
@@ -75,15 +96,21 @@ class Migrate
             $fineName = pathinfo($file, PATHINFO_FILENAME);
             $migration = $this->pdo->query("SELECT migration FROM migrations WHERE migration = '$fineName'")->fetch();
             if ($migration) {
+                echo "Migration already executed: $fineName" . PHP_EOL;
                 continue;
             }
+            echo "Migrating: $fineName" . PHP_EOL;
             $sql = file_get_contents($file);
             $this->pdo->exec($sql);
             $this->pdo->exec("INSERT INTO migrations (migration) VALUES ('$fineName')");
         }
     }
 
-    public function down()
+    /**
+     * Deleta o banco de dados de teste
+     * @return void
+     */
+    public function down(): void
     {
         $this->loadEnv();
         if(!defined('PHPUNIT_RUNNING')) {
@@ -102,7 +129,7 @@ class Migrate
         }
     }
 
-    public function refresh()
+    public function refresh(): void
     {
         $this->down();
         $this->up();
