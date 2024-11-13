@@ -48,4 +48,41 @@
     </nav>
     <?php echo $content; ?>
 </body>
+
+<footer class="bg-dark text-white text-center py-4 fixed-bottom">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <p class="mb-2">Conecte-se comigo:</p>
+            <a href="https://wa.me/5521969268032?text=Ola,%20somos%20da%20Gesuas.%20" class="text-white me-3 mb-2" target="_blank">
+                <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
+            <a href="mailto:joao.beleno@gmail.com" class="text-white me-3 mb-2">
+                <i class="bi bi-envelope-fill"></i> E-mail
+            </a>
+            <a href="https://www.instagram.com/jabokaa/" class="text-white me-3 mb-2" target="_blank">
+                <i class="bi bi-instagram"></i> Instagram
+            </a>
+            <a href="https://www.linkedin.com/in/joao-oliveira-9b30601bb/" class="text-white me-3 mb-2" target="_blank">
+                <i class="bi bi-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/jabokaa" class="text-white mb-2" target="_blank">
+                <i class="bi bi-github"></i> GitHub
+            </a>
+        </div>
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <p class="mb-0">&copy; 2024 João Beleno - Todos os direitos reservados.</p>
+                <p class="mb-0">Criado em: <strong>Novembro de 2024</strong></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Adicione o link do CSS do Bootstrap Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
+
 </html>
