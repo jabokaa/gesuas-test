@@ -20,7 +20,7 @@ class Request
 
     private function validateInjections($value)
     {
-        if (preg_match('/(select|drop|delete|create|update|insert)/i', $value)) {
+        if (preg_match('/(select|drop|delete|create|update|insert|script)/i', $value)) {
             echo 'SQL Injection detected';
             exit;
         }
