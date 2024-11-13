@@ -19,6 +19,10 @@ class Controller
             return $params;
         }
         $content = $this->getContent($view, $params);
+        if ($view === 'error') {
+            echo $this->getLayout($content, 'error_main');
+            return $params;
+        }
         echo $this->getLayout($content);
         return $params;
     }
@@ -29,7 +33,7 @@ class Controller
      * @param array $params
      * @return string
      */
-    protected function getContent(string $view, $params): string
+    protected function getContent(string|bool $view, $params): string|bool
     {
         // ob_start inicia o buffer
         ob_start();
@@ -45,12 +49,12 @@ class Controller
      * @param string $content
      * @return string
      */
-    protected function getLayout(string $content): string
+    protected function getLayout(string $content, $main = 'main'): string
     {
         // ob_start inicia o buffer
         ob_start();
         // require do layout
-        require __DIR__ . DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."views".DIRECTORY_SEPARATOR ."layout".DIRECTORY_SEPARATOR ."main.php";
+        require __DIR__ . DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."views".DIRECTORY_SEPARATOR ."layout".DIRECTORY_SEPARATOR ."{$main}.php";
         // ob_get_clean pega o conteudo do buffer e limpa ele
         return ob_get_clean();
     }
