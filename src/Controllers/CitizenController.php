@@ -10,9 +10,12 @@ class CitizenController extends Controller
     public function index()
     {
         $citizen = new citizen();
-        $citizens = $citizen->getAll();
-        return $this->render('citizens/index', [
-            'citizens' => $citizens
-        ]);
+        $data = $citizen->getPaginate(
+            nis: $_GET['nis'] ?? null,
+            name: $_GET['name'] ?? null,
+            date: $_GET['date'] ?? null,
+            page: $_GET['page'] ?? 1
+        );
+        return $this->render('citizens/index', $data);
     }
 }
