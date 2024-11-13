@@ -1,6 +1,8 @@
 <?php
 namespace Gesuas\Test\Routes;
 
+use Gesuas\Test\Requests\Request;
+
 class Routes
 {
 
@@ -18,7 +20,8 @@ class Routes
         foreach ($this->routes as $route) {
             if ($route['route'] == $this->uri && $this->method == $route['type']) {
                 $controller = new $route['controller'];
-                $controller->{$route['method']}();
+                $request = new Request();
+                $controller->{$route['method']}($request);
                 return;
             }
         }
