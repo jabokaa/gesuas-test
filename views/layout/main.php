@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeIgniter CRUD</title>
+    <title>Gesuas Test - João Beleño</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
     
     <!-- Bootstrap CSS -->
@@ -16,19 +16,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     
     <style>
-        body {
-            padding-top: 20px;
-        }
         .container {
-            max-width: 800px;
+            max-width: 100%;
+        }
+        .banner--home {
+            background-image: url("https://www.gesuas.com.br/wp-content/themes/gesuas/img/capa-com-selo.jpg");
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h2 class="text-center">CodeIgniter CRUD</h2>
-        <hr>
-        <?php echo $content; ?>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+            <!-- Logo ou nome do site -->
+            <a class="navbar-brand" href="#">
+                <img src="https://www.gesuas.com.br/wp-content/themes/gesuas/img/logo-gesuas.png" alt="Logo GESUAS" height="40">
+            </a>
+
+        </div>
+    </nav>
+    <?php echo $content; ?>
 </body>
 </html>
