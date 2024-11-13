@@ -4,7 +4,7 @@ namespace Gesuas\Test\Controllers;
 
 use Gesuas\Test\Exceptions\CustomException;
 use Gesuas\Test\Helper\Nis;
-use Gesuas\Test\Models\citizen;
+use Gesuas\Test\Models\Citizen;
 use Gesuas\Test\Requests\Request;
 
 class CitizenController extends Controller
