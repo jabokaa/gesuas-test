@@ -33,6 +33,17 @@
                 <img src="https://www.gesuas.com.br/wp-content/themes/gesuas/img/logo-gesuas.png" alt="Logo GESUAS" height="40">
             </a>
 
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./citizen">Nis</a>
+                </li>
+            </ul>
+        </div>
+
         </div>
     </nav>
     <?php echo $content; ?>
