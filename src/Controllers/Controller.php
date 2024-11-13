@@ -29,7 +29,7 @@ class Controller
         // ob_start inicia o buffer
         ob_start();
         // require do layout
-        require __DIR__ . "".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."views".DIRECTORY_SEPARATOR ."layout".DIRECTORY_SEPARATOR ."main.php";
+        require __DIR__ . DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."views".DIRECTORY_SEPARATOR ."layout".DIRECTORY_SEPARATOR ."main.php";
         // ob_get_clean pega o conteudo do buffer e limpa ele
         return ob_get_clean();
     }
