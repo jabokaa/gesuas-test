@@ -9,5 +9,6 @@
     </div>
 
     <a href="/citizen" class="btn btn-primary mt-3">Voltar</a>
+    <a href="/citizen/create" class="btn btn-success mt-3">Cadastrar Novo Cidadão</a>
 
 </div>

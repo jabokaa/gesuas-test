@@ -4,7 +4,7 @@ namespace Gesuas\Test\Models;
 
 use PDO;
 
-class citizen extends Model
+class Citizen extends Model
 {
     protected $table = 'citizens';
 
@@ -50,6 +50,23 @@ class citizen extends Model
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function findMaxNis()
+    {
+        $query = "SELECT MAX(nis) AS nis FROM {$this->table}";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function create($name, $nis)
+    {
+        $query = "INSERT INTO {$this->table} (name, nis) VALUES ('$name', '$nis')";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $citizen = $this->getByNis($nis);
+        return $citizen;
     }
 
 }
