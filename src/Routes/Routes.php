@@ -19,8 +19,11 @@ class Routes
             if ($route['route'] == $this->uri && $this->method == $route['type']) {
                 $controller = new $route['controller'];
                 $controller->{$route['method']}();
+                return;
             }
         }
+        echo '404 - Not Found';
+        exit;
     }
 
     public function addRoute($route, $controller, $method, $type) {

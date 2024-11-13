@@ -32,7 +32,7 @@
                 <td><?= $citizen['name'] ?></td>
                 <td><?= $citizen['nis'] ?></td>
                 <td><?= $citizen['created_at'] ?></td>
-                <td><a href="/citizens/show?nis=<?= $citizen['nis'] ?>"><i class="bi bi-eye"></i></a></td>
+                <td><a href="/citizen/show?nis=<?= $citizen['nis'] ?>"><i class="bi bi-eye"></i></a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
@@ -42,4 +42,9 @@
 if(isset($isPaginate)) {
     require __DIR__ . '/../layout/paginate.php'; 
 }?>
+</div>
+
+<!-- Botão Cadastrar -->
+<div class="text-right mb-3">
+    <a href="/citizen/create" class="btn btn-success">Cadastrar Novo Cidadão</a>
 </div>

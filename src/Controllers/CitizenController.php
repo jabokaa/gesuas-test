@@ -18,4 +18,13 @@ class CitizenController extends Controller
         );
         return $this->render('citizens/index', $data);
     }
+
+    public function show()
+    {
+        $citizen = new citizen();
+        $data = $citizen->getByNis($_GET['nis']);
+        return $this->render('citizens/show', [
+            'citizen' => $data
+        ]);
+    }
 }

@@ -44,4 +44,12 @@ class citizen extends Model
         ];
     }
 
+    public function getByNis($nis)
+    {
+        $query = "SELECT nis, name, DATE_FORMAT(created_at, '%d/%m/%Y %H:%i:%s') AS created_at FROM {$this->table} WHERE nis = '$nis'";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }
