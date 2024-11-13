@@ -7,7 +7,7 @@ use PDO;
 
 class Controller
 {
-    protected function render($view, $params = [])
+    public function render($view, $params = [])
     {
         $content = $this->getContent($view, $params);
         echo $this->getLayout($content);

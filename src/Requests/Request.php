@@ -1,6 +1,8 @@
 <?php
 namespace Gesuas\Test\Requests;
 
+use Gesuas\Test\Exceptions\CustomException;
+
 class Request
 {
     public $body;
@@ -21,8 +23,7 @@ class Request
     private function validateInjections($value)
     {
         if (preg_match('/(select|drop|delete|create|update|insert|script)/i', $value)) {
-            echo 'SQL Injection detected';
-            exit;
+            throw new CustomException('Invalid value', 400);
         }
         return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
     }

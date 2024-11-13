@@ -1,6 +1,7 @@
 <?php
 namespace Gesuas\Test\Routes;
 
+use Gesuas\Test\Exceptions\CustomException;
 use Gesuas\Test\Requests\Request;
 
 class Routes
@@ -25,8 +26,7 @@ class Routes
                 return;
             }
         }
-        echo '404 - Not Found';
-        exit;
+        throw new CustomException('Page not found', 404);
     }
 
     public function addRoute($route, $controller, $method, $type) {

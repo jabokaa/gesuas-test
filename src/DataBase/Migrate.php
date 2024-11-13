@@ -3,6 +3,7 @@
 namespace Gesuas\Test\DataBase;
 
 use Dotenv\Dotenv;
+use Gesuas\Test\Exceptions\CustomException;
 use PDO;
 use PDOException;
 
@@ -27,8 +28,7 @@ class Migrate
             }
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage() . PHP_EOL;
-            exit;
+            throw new CustomException($e->getMessage(), $e->getCode());
         }
     }
 

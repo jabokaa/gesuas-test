@@ -3,6 +3,7 @@
 namespace Gesuas\Test;
 
 use Dotenv\Dotenv;
+use Gesuas\Test\Exceptions\CustomException;
 use PDO;
 use PDOException;
 
@@ -23,7 +24,7 @@ class Database
             $this->pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;port=$dbPort", $dbUser, $dbPass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Erro de conexão: " . $e->getMessage(); exit;
+            throw new CustomException("Erro de conexão: ".$e->getMessage(), $e->getCode());
         }
     }
 
