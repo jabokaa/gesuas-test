@@ -3,7 +3,7 @@
 use Dotenv\Dotenv;
 use Gesuas\Test\DataBase\Migrate;
 
-require 'vendor/autoload.php';
+require realpath("vendor".DIRECTORY_SEPARATOR ."autoload.php");
 
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();

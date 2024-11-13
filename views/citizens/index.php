@@ -40,7 +40,7 @@
 
 <?php 
 if(isset($isPaginate)) {
-    require __DIR__ . '/../layout/paginate.php'; 
+    require __DIR__ . "".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."layout".DIRECTORY_SEPARATOR ."paginate.php"; 
 }?>
 </div>
 

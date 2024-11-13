@@ -19,7 +19,7 @@ class Controller
         ob_start();
         // extract transforma o array em variaveis
         extract($params);
-        require __DIR__ . "/../../views/{$view}.php";
+        require __DIR__ . DIRECTORY_SEPARATOR . "..".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."views".DIRECTORY_SEPARATOR ."{$view}.php";
         // ob_get_clean pega o conteudo do buffer e limpa ele
         return ob_get_clean();
     }
@@ -29,7 +29,7 @@ class Controller
         // ob_start inicia o buffer
         ob_start();
         // require do layout
-        require __DIR__ . "/../../views/layout/main.php";
+        require __DIR__ . "".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."views".DIRECTORY_SEPARATOR ."layout".DIRECTORY_SEPARATOR ."main.php";
         // ob_get_clean pega o conteudo do buffer e limpa ele
         return ob_get_clean();
     }

@@ -51,8 +51,7 @@ class Migrate
         )");
 
         // pega os artivos .sql da pasta database migrations
-        echo __DIR__ . PHP_EOL;
-        $files = glob(__DIR__ . '/Migrations/*.sql');
+        $files = glob(__DIR__ . "".DIRECTORY_SEPARATOR ."Migrations".DIRECTORY_SEPARATOR ."*.sql");
         foreach ($files as $file) {
             $fineName = pathinfo($file, PATHINFO_FILENAME);
             $migration = $this->pdo->query("SELECT migration FROM migrations WHERE migration = '$fineName'")->fetch();
