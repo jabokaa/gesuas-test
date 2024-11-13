@@ -15,5 +15,6 @@ $routes->addRoute('/citizen/create', CitizenController::class, 'create', 'GET');
 $routes->addRoute('/citizen/edit', CitizenController::class, 'edit', 'GET');
 $routes->addRoute('/citizen/store', CitizenController::class, 'store', 'POST');
 $routes->addRoute('/', HomeController::class, 'home', 'GET');
+$routes->addRoute('', HomeController::class, 'home', 'GET');
 
 $routes->goToRoute();

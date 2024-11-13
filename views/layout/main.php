@@ -36,10 +36,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./citizen">Nis</a>
+                    <a class="nav-link" href="/citizen">Nis</a>
                 </li>
             </ul>
         </div>
