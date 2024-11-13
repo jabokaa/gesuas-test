@@ -34,12 +34,12 @@ class Citizen extends Model
 
         $sql = $sql . " LIMIT " . ($page - 1) * $perPage . ", $perPage";
         $stmt = $this->db->prepare($sql);
-        
+
         $stmt->execute();
         return [
             'citizens' => $stmt->fetchAll(PDO::FETCH_ASSOC),
-            'totalPages' => $totalPage,
-            'page' => $page,
+            'totalPages' => intval($totalPage),
+            'page' => intval($page),
             'isPaginate' => true
         ];
     }

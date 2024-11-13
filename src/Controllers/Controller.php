@@ -9,8 +9,13 @@ class Controller
 {
     public function render($view, $params = [])
     {
+        // verifica se esta executando teste unitario
+        if (defined('PHPUNIT_RUNNING')) {
+            return $params;
+        }
         $content = $this->getContent($view, $params);
         echo $this->getLayout($content);
+        return $params;
     }
 
     protected function getContent($view, $params)

@@ -20,6 +20,14 @@ class Database
         $dbPass = $_ENV['DB_PASS'];
         $dbPort = $_ENV['DB_PORT'];
 
+        if(defined('PHPUNIT_RUNNING')){
+            $dbHost = $_ENV['DB_HOST_TEST'];
+            $dbName = $_ENV['DB_NAME_TEST'];
+            $dbUser = $_ENV['DB_USER_TEST'];
+            $dbPass = $_ENV['DB_PASS_TEST'];
+            $dbPort = $_ENV['DB_PORT_TEST'];
+        }
+
         try {
             $this->pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;port=$dbPort", $dbUser, $dbPass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

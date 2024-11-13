@@ -13,7 +13,6 @@ class CustomException extends Exception
             'errorMessage' => $message,
             'errorCode' => $code
         ]);
-        exit;
     }
 
     // Método para exibir um erro detalhado

@@ -9,17 +9,19 @@ use Gesuas\Test\Requests\Request;
 
 class CitizenController extends Controller
 {
-    public function __construct(public ?Citizen $citizen = null)
+    public function __construct(public ?Citizen $citizen = null, public ?Nis $nis = null)
     {
         if (!$this->citizen) {
             $this->citizen = new Citizen();
+        }
+        if (!$this->nis) {
+            $this->nis = new Nis($this->citizen);
         }
     }
 
     public function index(Request $request)
     {
         try{
-            $this->citizen = new Citizen();
             $data = $this->citizen->getPaginate(
                 nis: $request->get('nis') ?? null,
                 name: $request->get('name') ?? null,
@@ -35,8 +37,10 @@ class CitizenController extends Controller
     public function show(Request $request)
     {
         try{
-            $this->citizen = new Citizen();
             $data = $this->citizen->getByNis($request->get('nis'));
+            if (!$data) {
+                throw new CustomException('Citizen not found', 404);
+            }
             return $this->render('citizens/show', [
                 'citizen' => $data
             ]);
@@ -54,8 +58,7 @@ class CitizenController extends Controller
     {
         try{
             $name = $request->get('name');
-            $nis = Nis::generetNisCrc32Name($name);
-            $this->citizen = new Citizen();
+            $nis = $this->nis->generetNisCrc32Name($name);
             $data = $this->citizen->create($name, $nis);
             return $this->render('citizens/show', [
                 'citizen' => $data

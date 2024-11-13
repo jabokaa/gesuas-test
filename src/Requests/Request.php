@@ -32,4 +32,9 @@ class Request
     {
         return $this->body->$name ?? null;
     }
+
+    public function set($name, $value)
+    {
+        $this->body->$name = $this->validateInjections($value);
+    }
 }
