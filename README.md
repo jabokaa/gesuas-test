@@ -29,7 +29,7 @@ DB_PASS_TEST=
 DB_PORT_TEST=3306
 ```
 
-4. Execute a migração responsável pela criação das tabelas e registros de teste:
+4. Abra o terminal e execute a migração responsável pela criação das tabelas e registros de teste no:
 ```
 php command.php migrate
 ```
