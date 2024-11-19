@@ -39,6 +39,7 @@ php command.php migrate
 php -S localhost:8000
 ```
    Você pode mudar a porta caso necessário.
+
 6. Para acessar a aplicação, utilize o endereço http://localhost:8000/ ou substitua 8000 pela porta especificada no comando utilizado.
 
 ## Sobre os Testes Automatizados
