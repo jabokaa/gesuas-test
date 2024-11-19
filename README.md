@@ -14,8 +14,7 @@ Este projeto tem como objetivo a criação de um sistema de cadastro de cidadão
 ### Passos para executar o projeto:
 1. Após baixar o repositório, execute o comando `composer install` na raiz do projeto.
 2. Copie o arquivo `.env.example` e renomeie para `.env`.
-3. Ajuste as variáveis de ambiente conforme abaixo:
-
+3. Configure as variáveis de ambiente no arquivo .env conforme indicado abaixo. Certifique-se de que a variável DB_NAME_TEST seja diferente de DB_NAME para garantir a execução correta dos testes:
 ```
 DB_HOST=localhost
 DB_NAME=gesuas_test
@@ -40,6 +39,7 @@ php command.php migrate
 php -S localhost:8000
 ```
    Você pode mudar a porta caso necessário.
+6. Para acessar a aplicação, utilize o endereço http://localhost:8000/ ou substitua 8000 pela porta especificada no comando utilizado.
 
 ## Sobre os Testes Automatizados
 
